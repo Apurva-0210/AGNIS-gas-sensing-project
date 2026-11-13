@@ -1,0 +1,71 @@
+% Table 8: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\expandafter\gdef\csname tabref@eq:S\endcsname{Equation (2)}
+\expandafter\gdef\csname tabcite@bonyani2022auzno\endcsname{12}
+\expandafter\gdef\csname tabcite@chu2023ga2o3\endcsname{4}
+\expandafter\gdef\csname tabcite@guo2021sno2zno\endcsname{3}
+\expandafter\gdef\csname tabcite@mai2010agvo3\endcsname{21}
+\expandafter\gdef\csname tabcite@saeed2024chitosansal\endcsname{19}
+\expandafter\gdef\csname tabcite@singh2023hcn\endcsname{18}
+\expandafter\gdef\csname tabcite@sonker2016panizno\endcsname{11}
+\expandafter\gdef\csname tabcite@verma2024agcupani\endcsname{15}
+\expandafter\gdef\csname tabcite@yan2023agvo3breath\endcsname{22}
+\expandafter\gdef\csname tabcite@zhang2020panisrge\endcsname{10}
+\expandafter\gdef\csname tabcite@zhou2024ternary\endcsname{16}
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{7}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{Comparison with published gas sensors.}
+\label{tab:comparison}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{L{3.3cm}L{1.4cm}L{1.3cm}L{1.1cm}L{2.3cm}L{2.6cm}L{1.4cm}L{1.4cm}L{1.1cm}}
+\toprule
+\textbf{Sensing material} & \textbf{Target gas} & \textbf{Conc.} & \textbf{Temp.} & \textbf{Platform} & \textbf{Response} & \textbf{Response time} & \textbf{Recovery time} & \textbf{Ref.} \\
+\midrule
+\multicolumn{9}{l}{\textit{This work (coated MiCS-4514, highest tested concentration unless noted)}} \\
+PANI--AgVO$_3$ on MiCS-4514 & NO$_2$ & 1.0 ppm & RT & Commercial metal-oxide sensor, coated & $S_{OX}$ = 44.5 (uncoated 0.93$^{b}$) & NR & NR & This work \\
+PANI--AgVO$_3$ on MiCS-4514 & VOC vapour & 0.3 ppm & RT & Commercial metal-oxide sensor, coated & $S_{RED}$ = 5.31 (uncoated 4.67) & NR & NR & This work \\
+PANI--AgVO$_3$ on MiCS-4514 & NH$_3$ & 0.8 ppm$^{a}$ & RT & Commercial metal-oxide sensor, coated & $S_{OX}$ = 1.79 (uncoated 1.28) & NR & NR & This work \\
+PANI--AgVO$_3$ on MiCS-4514 & CO & 13 ppm & RT & Commercial metal-oxide sensor, coated & $S_{RED}$ = 2.32 (uncoated 2.92) & NR & NR & This work \\
+\midrule
+\multicolumn{9}{l}{\textit{Published work (as reported by the original authors)}} \\
+$\beta$-AgVO$_3$ nanowire (single) & H$_2$S & 50 ppm & RT & Single-nanowire device & Selective; 6 V threshold switching & $<$20 s & $<$20 s & \cite{mai2010agvo3} \\
+AgVO$_3$ nanowires & Humidity & 20--90\% RH & RT & Gold interdigitated electrode on polyimide & $\sim$1 order of magnitude change in resistance & 0.6 s & 1.2 s & \cite{yan2023agvo3breath} \\
+PANI/SrGe$_4$O$_9$ & NH$_3$ & 0.2 ppm & 25 $^{\circ}$C & Flexible interdigitated electrode & 16\% (8\% for PANI); detection limit 250 ppt & 24 s$^{b}$ & NR & \cite{zhang2020panisrge} \\
+PANI@Ag/Cu & NH$_3$ & 300 ppm & RT & Resistive film & 86\% & NR & NR & \cite{verma2024agcupani} \\
+PANI/copper phthalocyanine/silver nanoparticles & NH$_3$ & 500 ppm & RT & Flexible film, wireless read-out & 3.6; detection limit 0.234 ppm & 61 s & 19 s & \cite{zhou2024ternary} \\
+PANI/montmorillonite--reduced graphene oxide & HCN & 2 ppm & RT & Resistive film & 4.56\%; 1.1174 ppm$^{-1}$ & NR & NR & \cite{singh2023hcn} \\
+PANI--ZnO (5 wt\% PANI) & NO$_2$ & 20 ppm & RT & Thin film & $\sim$611 & NR & NR & \cite{sonker2016panizno} \\
+Au/ZnO nanofibres coated with PANI & NO$_2$ & 50 ppm & 300 $^{\circ}$C & Electrospun nanofibres & $\sim$50 & NR & NR & \cite{bonyani2022auzno} \\
+Hollow SnO$_2$/ZnO nanofibres & NO$_2$ & 0.5 ppm & $\sim$20 $^{\circ}$C & Screen-printed Ag, flexible & 336\% (13\% for SnO$_2$) & NR & NR & \cite{guo2021sno2zno} \\
+Ga$_2$O$_3$ nanorods & NO$_2$ & 10 ppm & NR & Seeded substrate & 1184.6\%; 34.2\% at 100 ppb & 63.6 s & 135.7 s & \cite{chu2023ga2o3} \\
+Chitosan--salicylaldehyde/$\beta$-cyclodextrin/ZnO & NH$_3$ & 10 ppm & RT & Polymer composite film & 6192 (712 unmodified); detection limit 0.12 ppb & 650 s & 350 s & \cite{saeed2024chitosansal} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.96\textwidth}
+\raggedright\scriptsize \textbf{Notes.} $S_{RED}$ and $S_{OX}$ are the sensitivity factors of the reducing and oxidising elements of the MiCS-4514 (\Cref{eq:S}); the value for the uncoated sensor at the same concentration is given in brackets. Values for published work are quoted as reported (percentage change, ratio, voltage or current), so a number in one row cannot be set directly against another. Conc.\ is the tested gas concentration (ppm, ppb and ppt are parts per million, billion and trillion), Temp.\ the operating temperature, RT room temperature, RH relative humidity, NR not reported, PANI polyaniline and VOC volatile organic compound. Response and recovery times are those reported at the stated concentration. $^{a}$ Concentration of the largest NH$_3$ response of the coated OX element. $^{b}$ No measurable change of the uncoated OX element over 0.05--1 ppm NO$_2$. Response and recovery times will be taken in cyclic exposures.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

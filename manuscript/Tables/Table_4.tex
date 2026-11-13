@@ -1,0 +1,55 @@
+% Table 4: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\expandafter\gdef\csname tabcite@ibrahim2024chitosanagvo3\endcsname{27}
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{3}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{FTIR band assignments.}
+\label{tab:ftir}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{L{1.5cm}L{5.6cm}}
+\toprule
+\textbf{Band (cm$^{-1}$)} & \textbf{Assignment} \\
+\midrule
+\multicolumn{2}{l}{\emph{PA-HCl composite}} \\
+1571 & C=C stretching, quinoid ring \\
+1472 & C=C stretching, benzenoid ring \\
+1292 & C--N stretching, secondary aromatic amine \\
+$\sim$1236 & C--N$^{+\bullet}$ stretching (polaron) \\
+$\sim$1141 & B--NH$^{+}$=Q electronic-like band (doped state) \\
+$\sim$798 & C--H oop bending, 1,4-disubstituted ring \\
+\midrule
+\multicolumn{2}{l}{\emph{AgVO$_3$ precursor}} \\
+926 & VO$_3$ symmetric stretching and V=O stretching \\
+908 & Ag--O--V bridging or O--V--O vibration \\
+761 & VO$_3$ antisymmetric stretching \\
+625 & V--O--V stretching \\
+$\sim$490 & Strong, broad lower-frequency vanadate band, cut off by the 400~cm$^{-1}$ limit; not assigned \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.96\linewidth}
+\raggedright\scriptsize B = benzenoid ring, Q = quinoid ring, oop = out-of-plane bend. Bands marked $\sim$ are weak and uncertain to about $\pm$5~cm$^{-1}$, the others to about $\pm$2~cm$^{-1}$. Vanadate assignments follow the AgVO$_3$ bands of Ref.~\cite{ibrahim2024chitosanagvo3}.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

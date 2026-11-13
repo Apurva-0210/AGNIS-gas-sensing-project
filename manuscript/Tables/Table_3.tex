@@ -1,0 +1,50 @@
+% Table 3: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\expandafter\gdef\csname tabref@eq:cubic\endcsname{Equation (6)}
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{2}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{XRD reflections of the composite.}
+\label{tab:xrd}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{cccccc}
+\toprule
+\textbf{$hkl$} & \textbf{2$\theta$ ($^{\circ}$)} & \textbf{FWHM ($^{\circ}$)} & \textbf{$d_{\mathrm{obs}}$ (\AA)} & \textbf{$d_{\mathrm{calc}}$ (\AA)} & \textbf{$D$ (nm)} \\
+\midrule
+(111) & 27.80 & 0.193 & 3.207 & 3.207 & 42.3 \\
+(200) & 32.21 & 0.188 & 2.777 & 2.777 & 43.9 \\
+(220) & 46.19 & 0.214 & 1.964 & 1.964 & 40.4 \\
+(311) & 54.77 & 0.209 & 1.675 & 1.675 & 42.8 \\
+(222) & 57.42 & 0.222 & 1.604 & 1.603 & 40.8 \\
+(400) & 67.39 & 0.282 & 1.389 & 1.389 & 33.9 \\
+(331) & 74.37 & 0.339 & 1.275 & 1.274 & 29.4 \\
+(420) & 76.66 & 0.225 & 1.242 & 1.242 & 45.1 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.96\linewidth}
+\raggedright\scriptsize 2$\theta$ is corrected for the 0.14$^{\circ}$ zero offset. $d_{\mathrm{calc}}$ is the spacing for the cubic lattice parameter $a = 5.554$~\AA\ (\Cref{eq:cubic}). The weak (331) line has a low signal-to-noise ratio, so its width and size are uncertain.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

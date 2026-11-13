@@ -1,0 +1,49 @@
+% Table 1: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{0}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{Chemicals and materials used.}
+\label{tab:materials}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{@{}L{4.6cm}L{3.8cm}L{3.4cm}L{4.2cm}@{}}
+\toprule
+\textbf{Material} & \textbf{Formula} & \textbf{Make} & \textbf{Purity} \\
+\midrule
+Ammonium vanadate & NH$_4$VO$_3$ & Sigma-Aldrich & $\geq 99\%$ \\
+Silver nitrate & AgNO$_3$ & Sigma-Aldrich & $\geq 99.8\%$ \\
+Nitric acid & HNO$_3$ & Merck & 68\% \\
+Aniline & C$_6$H$_5$NH$_2$ & Sigma-Aldrich & $\geq 99.5\%$ \\
+Ammonium persulfate (APS) & (NH$_4$)$_2$S$_2$O$_8$ & Sigma-Aldrich & $\geq 98\%$ \\
+Hydrochloric acid & HCl & Merck & 37\% (diluted to 1~M) \\
+Chitosan & (C$_6$H$_{11}$NO$_4$)$_n$ & Sigma-Aldrich & 75--85\% deacetylated \\
+Acetic acid & CH$_3$COOH & Merck & $\geq 99.8\%$ \\
+Ethanol (absolute) & C$_2$H$_5$OH & Merck & $\geq 99.9\%$ \\
+Distilled water & H$_2$O & Laboratory & -- \\
+Gas sensor & MiCS-4514 & SGX Sensortech & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

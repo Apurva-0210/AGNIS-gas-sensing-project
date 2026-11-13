@@ -1,0 +1,47 @@
+% Table 7: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\expandafter\gdef\csname tabref@eq:S\endcsname{Equation (2)}
+\expandafter\gdef\csname tabref@tab:fits\endcsname{Table 5}
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{6}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{Summary of the sensing results for the main element of each gas.}
+\label{tab:summary}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{llccccL{5.4cm}}
+\toprule
+\textbf{Gas} & \textbf{Element} & \shortstack{\textbf{Coated}\\\textbf{$S_{\max}$}} & \shortstack{\textbf{Uncoated}\\\textbf{$S_{\max}$}} & \shortstack{\textbf{Ratio to}\\\textbf{NO$_2$}} & \shortstack{\textbf{Coated fit}\\\textbf{$R^{2}$}} & \textbf{Observation} \\
+\midrule
+NO$_2$ & OX & 44.46 & 1.06 & 1.000 & 0.993 & Threshold-like onset above 0.4~ppm; 47.8$\times$ at 1~ppm \\
+VOC vapour & RED & 5.31 & 4.67 & 0.119 & 0.982 & Higher at all 9 steps ($+11$ to $+47$\%) \\
+NH$_3$ & OX & 1.79 & 1.66 & 0.040 & 0.934 & Higher from 0.5~ppm ($+6$ to $+40$\%) \\
+CO & RED & 2.32 & 2.92 & 0.052 & 0.903 & Higher up to 7~ppm ($+3$ to $+9$\%) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.92\textwidth}
+\raggedright\scriptsize $S_{\max}$ is the largest step sensitivity of \Cref{eq:S} over the tested range (1~ppm NO$_2$, 0.3~ppm VOC vapour, 0.8~ppm for the NH$_3$ maximum of the coated sensor, 13~ppm CO); the uncoated maximum for NH$_3$ is at 0.4~ppm. The ratio to NO$_2$ is that of the coated $S_{\max}$ values. The fit $R^2$ is that of the coated sensor in \Cref{tab:fits}.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

@@ -1,0 +1,49 @@
+% Table 2: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{1}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{XRD reflections of the precursor.}
+\label{tab:xrdp}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{ccc@{\hspace{16pt}}ccc}
+\toprule
+\textbf{2$\theta$ ($^{\circ}$)} & \textbf{$d$ (\AA)} & \textbf{$I_{\mathrm{rel}}$} & \textbf{2$\theta$ ($^{\circ}$)} & \textbf{$d$ (\AA)} & \textbf{$I_{\mathrm{rel}}$} \\
+\midrule
+12.30 & 7.193 & 24 & 32.79 & 2.729 & 68 \\
+17.14 & 5.170 & 64 & 33.55 & 2.669 & 16 \\
+24.85 & 3.580 & 28 & 34.75 & 2.579 & 28 \\
+27.40 & 3.252 & 70 & 39.48 & 2.281 & 20 \\
+28.15 & 3.167 & 84 & 40.37 & 2.233 & 15 \\
+29.62 & 3.013 & 22 & 46.58 & 1.948 & 18 \\
+31.42 & 2.845 & 67 & 53.29 & 1.718 & 25 \\
+32.03 & 2.792 & 100 & & & \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.96\linewidth}
+\raggedright\scriptsize $I_{\mathrm{rel}}$ is the fitted peak height above the local background relative to the strongest line. Weak lines are uncertain by a few units.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

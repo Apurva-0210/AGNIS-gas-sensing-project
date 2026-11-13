@@ -1,0 +1,50 @@
+% Table 5: compiles on its own (pdflatex) and is also \input by main.tex.
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @notprerr\endcsname\else
+\expandafter\ifx\csname documentclass\expandafter\endcsname\csname @twoclasseserror\endcsname\else
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,multirow,adjustbox,siunitx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\Cref}[1]{\csname tabref@#1\endcsname}
+\renewcommand{\cite}[1]{[\csname tabcite@#1\endcsname]}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\gdef\tabstandalone{1}
+\begin{document}
+\setcounter{table}{4}
+\fi\fi
+\begin{table}[!htbp]
+\centering
+\caption{Fits of the sensitivity $S$ to the concentration $C$ in ppm.}
+\label{tab:fits}
+\scriptsize
+\setlength{\tabcolsep}{5pt}
+\begin{adjustbox}{max width=\textwidth,center}
+\begin{tabular}{llllcccc}
+\toprule
+\textbf{Gas} & \textbf{Element} & \textbf{Sensor} & \textbf{Model} & \textbf{Equation} & \textbf{$R^{2}$} & \textbf{RMSE} & \textbf{$n$} \\
+\midrule
+NO$_2$ & OX & Coated & Power law & $S=44.06\,C^{7.457}$ & 0.993 & 1.094 & 10 \\
+NO$_2$ & OX & Uncoated & Quadratic & $S=-0.201C^2+0.163C+0.950$ & 0.216 & 0.040 & 11 \\
+VOC vapour & RED & Coated & Power law & $S=10.76\,C^{0.610}$ & 0.982 & 0.182 & 9 \\
+VOC vapour & RED & Uncoated & Power law & $S=10.01\,C^{0.656}$ & 0.972 & 0.204 & 9 \\
+NH$_3$ & OX & Coated & Quadratic & $S=-0.468C^2+1.120C+1.126$ & 0.934 & 0.056 & 14 \\
+NH$_3$ & OX & Uncoated & Quadratic & $S=0.118C^2-0.431C+1.647$ & 0.545 & 0.109 & 13 \\
+CO & RED & Coated & Power law & $S=1.15\,C^{0.242}$ & 0.903 & 0.117 & 10 \\
+CO & RED & Uncoated & Power law & $S=0.82\,C^{0.471}$ & 0.967 & 0.109 & 11 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[3pt]
+\begin{minipage}{0.7\textwidth}
+\raggedright\scriptsize RMSE is the root-mean-square error and $n$ the number of concentration steps in the fit.
+\end{minipage}
+\end{table}
+\expandafter\ifx\csname tabstandalone\endcsname\relax\else
+\end{document}
+\fi

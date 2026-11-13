@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Data, code and firmware for the polyaniline-silver metavanadate nanocomposite coating on a MiCS-4514 sensor"
+type: dataset
+authors:
+  - family-names: Kale
+    given-names: Gayatri
+  - family-names: Kumar
+    given-names: Apurva
+  - family-names: Kokate
+    given-names: Kiran
+  - family-names: Nath
+    given-names: Deepa
+    email: deepa.nath@mitwpu.edu.in
+    affiliation: "Dr. Vishwanath Karad MIT World Peace University, Pune, India"
